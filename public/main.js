@@ -54,6 +54,7 @@ function getBeamCSV(){
     "Concrete Grade", "Main ReinforcementGrade", "Shear ReinforcementGrade",
     "Shear Reinforcement_1", "Shear Reinforcement_2", "Shear Reinforcement_3","Shear Reinforcement_4","Shear Reinforcement_5"];
     var csvStr = JsonFields.join(",") + "\n";
+    var topReinforcementStart, topReinforcementMid, topReinforcementEnd, bottomReinforcement;
     beams.forEach(element => {
         type = element.type;
         pass = element.pass;
@@ -62,10 +63,15 @@ function getBeamCSV(){
         length = element.length;
         sizeX = element.size[0];
         sizeY = element.size[1];
-        topReinforcementStart = element.topReinforcement[0];
-        topReinforcementMid = element.topReinforcement[1];
-        topReinforcementEnd = element.topReinforcement[2];
-        bottomReinforcement = element.bottomReinforcement;
+        if(element.topReinforcement){
+            topReinforcementStart = element.topReinforcement["start"];
+            topReinforcementMid = element.topReinforcement["mid"];
+            topReinforcementEnd = element.topReinforcement["end"];
+            
+        }
+        if(element.bottomReinforcement){
+            bottomReinforcement = element.bottomReinforcement;
+        }  
         cover = element.cover;
         concreteGrade = element.concreteGrade;
         mainReinforcementGrade = element.mainReinforcementGrade;

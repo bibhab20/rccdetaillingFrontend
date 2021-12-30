@@ -77,7 +77,7 @@ function getBeamCSV(){
         concreteGrade = element.concreteGrade;
         mainReinforcementGrade = element.mainReinforcementGrade;
         shearReinforcementGrade = element.shearReinforcementGrade;
-        if(element.shearReinforcement.length ==5){
+        if(element.shearReinforcement && element.shearReinforcement.length ==5){
             shearReinforcement_0 = element.shearReinforcement[0];
             shearReinforcement_1 = element.shearReinforcement[1];
             shearReinforcement_2 = element.shearReinforcement[2];

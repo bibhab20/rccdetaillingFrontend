@@ -66,7 +66,7 @@ function getBeamCSV(){
         if(element.topReinforcement){
             topReinforcementStart = element.topReinforcement["start"];
             topReinforcementMid = element.topReinforcement["mid"];
-            topReinforcementEnd = element.topReinforcement["end"];
+            topReinforcementMid = element.topReinforcement["end"];
             
         }
         if(element.bottomReinforcement){
@@ -78,7 +78,9 @@ function getBeamCSV(){
         shearReinforcementGrade = element.shearReinforcementGrade;
         shearReinforcement = element.shearReinforcement;
 
-        csvStr += type + ','+pass+','+ segmentNumber +','+ incidence +','+length+','+sizeX+','+sizeY+','+cover+"\n";
+        csvStr += type + ','+pass+','+ segmentNumber +','+ incidence +','+length+','+sizeX+','+sizeY+','+
+        topReinforcementStart +','+ topReinforcementMid +','+topReinforcementStart +','+topReinforcementMid +','+
+        bottomReinforcement +','+ cover +','+mainReinforcementGrade +','+shearReinforcement +','+"\n";
     });
     return csvStr;
 }

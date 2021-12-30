@@ -55,6 +55,7 @@ function getBeamCSV(){
     "Shear Reinforcement_1", "Shear Reinforcement_2", "Shear Reinforcement_3","Shear Reinforcement_4","Shear Reinforcement_5"];
     var csvStr = JsonFields.join(",") + "\n";
     var topReinforcementStart, topReinforcementMid, topReinforcementEnd, bottomReinforcement;
+    var shearReinforcement_0, shearReinforcement_1, shearReinforcement_2, shearReinforcement_3, shearReinforcement_4;
     beams.forEach(element => {
         type = element.type;
         pass = element.pass;
@@ -66,7 +67,7 @@ function getBeamCSV(){
         if(element.topReinforcement){
             topReinforcementStart = element.topReinforcement["start"];
             topReinforcementMid = element.topReinforcement["mid"];
-            topReinforcementMid = element.topReinforcement["end"];
+            topReinforcementEnd = element.topReinforcement["end"];
             
         }
         if(element.bottomReinforcement){
@@ -76,11 +77,18 @@ function getBeamCSV(){
         concreteGrade = element.concreteGrade;
         mainReinforcementGrade = element.mainReinforcementGrade;
         shearReinforcementGrade = element.shearReinforcementGrade;
-        shearReinforcement = element.shearReinforcement;
+        if(element.shearReinforcement.length ==5){
+            shearReinforcement_0 = element.shearReinforcement[0];
+            shearReinforcement_1 = element.shearReinforcement[1];
+            shearReinforcement_2 = element.shearReinforcement[2];
+            shearReinforcement_3 = element.shearReinforcement[3];
+            shearReinforcement_4 = element.shearReinforcement[4];
+        }
 
         csvStr += type + ','+pass+','+ segmentNumber +','+ incidence +','+length+','+sizeX+','+sizeY+','+
-        topReinforcementStart +','+ topReinforcementMid +','+topReinforcementStart +','+topReinforcementMid +','+
-        bottomReinforcement +','+ cover +','+mainReinforcementGrade +','+shearReinforcement +','+"\n";
+        topReinforcementStart +','+ topReinforcementMid +','+topReinforcementEnd +','+
+        bottomReinforcement +','+ cover +','+mainReinforcementGrade +','+shearReinforcementGrade +','+
+        shearReinforcement_0 +','+shearReinforcement_1 +','+','+shearReinforcement_2+','+shearReinforcement_3 +','+shearReinforcement_4+"\n";
     });
     return csvStr;
 }

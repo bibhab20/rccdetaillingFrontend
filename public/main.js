@@ -78,16 +78,16 @@ function getBeamCSV(){
         mainReinforcementGrade = element.mainReinforcementGrade;
         shearReinforcementGrade = element.shearReinforcementGrade;
         if(element.shearReinforcement && element.shearReinforcement.length ==5){
-            shearReinforcement_0 = element.shearReinforcement[0];
-            shearReinforcement_1 = element.shearReinforcement[1];
-            shearReinforcement_2 = element.shearReinforcement[2];
-            shearReinforcement_3 = element.shearReinforcement[3];
-            shearReinforcement_4 = element.shearReinforcement[4];
+            shearReinforcement_0 = getshearReinforcementString(element.shearReinforcement[0]);
+            shearReinforcement_1 = getshearReinforcementString(element.shearReinforcement[1]);
+            shearReinforcement_2 = getshearReinforcementString(element.shearReinforcement[2]);
+            shearReinforcement_3 = getshearReinforcementString(element.shearReinforcement[3]);
+            shearReinforcement_4 = getshearReinforcementString(element.shearReinforcement[4]);
         }
 
         csvStr += type + ','+pass+','+ segmentNumber +','+ incidence +','+length+','+sizeX+','+sizeY+','+
         topReinforcementStart +','+ topReinforcementMid +','+topReinforcementEnd +','+
-        bottomReinforcement +','+ cover +','+mainReinforcementGrade +','+shearReinforcementGrade +','+
+        bottomReinforcement +','+ cover +','+concreteGrade+','+mainReinforcementGrade +','+shearReinforcementGrade +','+
         shearReinforcement_0 +','+shearReinforcement_1 +','+','+shearReinforcement_2+','+shearReinforcement_3 +','+shearReinforcement_4+"\n";
     });
     return csvStr;
@@ -95,5 +95,12 @@ function getBeamCSV(){
 
 function getColumnsCsv(){
 
+}
+
+function getshearReinforcementString(shearReinforcement){
+    var str = "diameter: "+ shearReinforcement["diameter"];
+    str+= "leg: "+ shearReinforcement["leg"];
+    str+= "spacing: "+ shearReinforcement["spacing"];
+    return str;
 }
 

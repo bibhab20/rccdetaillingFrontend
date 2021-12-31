@@ -19,6 +19,7 @@ submitButton.addEventListener('click',() => {
     console.log("inside submit button listner");
     if(srcfile){
         console.log("src file found");
+        statusLabel.innerHTML = "Processing Please Wait";
         uploadFile(uploadButton.files[0]);
     }
 });
@@ -48,6 +49,7 @@ const uploadFile = (file) => {
         columns = structure["columns"];
         console.log("*********Beams***********");
         console.log(beams);
+        statusLabel.innerHTML = "Your file is ready to download";
         downloadButtonLabel.hidden = false;
     })
     .catch(err => console.error(err));

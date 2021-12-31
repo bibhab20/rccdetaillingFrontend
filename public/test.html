@@ -1,25 +1,78 @@
 <html>
     <head>
         <title>RCC Detailing web</title>
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css?
-        family=Dosis&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../style.css">
+        <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="../src/assets/img/favicon.ico">
     </head>
     <body>
         <div class="hero">
             <div class="navbar">
-                <img src="logo.png">
+                <h1>RCC<span>Detailing</span></h1>
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
                 <div class="navgar-icons">
-                    <img src="bell.png">
-                    <img src="user.png">
-                    <img src="menu.png">
+                    <img src="../images/bell.png">
+                    <img src="../images/user.png">
+                    <img src="../images/menu.png">
+                </div>
+            </div>
+            <div class="banner">
+                <div class="left-column">
+                    
+                    <h1>RCC<span>Detailing</span></h1>
+                    <h3>Always<span>there for you</span></h3>
+                    <p>There is nothing much to say here. Just filling up the space to make it look it look it little good</p>
+                    <div class="buttonSection">
+                        <label id="status-lable" class="staus_lable">Upload the a text file and then click on submit</label>
+                        <div class="upload-btn-wrapper">
+                            <br>
+                            <!-- actual upload which is hidden -->
+                            <input type="file" id="upload-btn" hidden/>
+    
+                            <!-- our custom upload button -->
+                            <label for="upload-btn" class="button-label">Choose File</label>
+    
+                            <!-- name of file chosen -->
+                            <span id="file-chosen">No file chosen</span>
+                        </div>
+                        <div class="submit-btn-wrapper">
+                            <br>
+                            <br>
+    
+                            <!-- actual upload which is hidden -->
+                            <input type="button" id="submit-btn" hidden/>
+    
+                            <!-- our custom upload button -->
+                            <label for="submit-btn" class="button-label">Submit</label>
+    
+                            <!-- name of file chosen -->
+                     
+                        </div>
+                        <div class="download-btn-wrapper">
+                            <br>
+                            <br>
+    
+                            <!-- actual upload which is hidden -->
+                            <input type="button" id="download-btn" hidden/>
+    
+                            <!-- our custom upload button -->
+                            <label for="download-btn" id="download-btn-label" class="button-label">Download</label>
+    
+                            <!-- name of file chosen -->
+                     
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="right-column">
+                    <img src="../images/feature2.png">
                 </div>
             </div>
         </div>
     </body>
+    <script src="main.js"></script>
 </html>

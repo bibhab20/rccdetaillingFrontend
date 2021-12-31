@@ -1,13 +1,29 @@
 var beams, columns, structure;
-const input = document.getElementById('avatar');
-const downloadButton = document.getElementById('download');
+const uploadButton = document.getElementById('upload-btn');
+const downloadButton = document.getElementById('download-btn');
+const submitButton = document.getElementById("submit-btn");
+var statusLabel = document.getElementById("status-lable");
+var fileNameLabel = document.getElementById("file-chosen");
+var downloadButtonLabel = document.getElementById("download-btn-label");
+var srcfile;
+
 console.log("inside main");
+downloadButtonLabel.hidden = true;
 // add event listener
-input.addEventListener('change', () => {
-    uploadFile(input.files[0]);
+uploadButton.addEventListener('change', () => {
+    srcfile = uploadButton.files[0];
+    fileNameLabel.textContent= uploadButton.files[0].name;
 });
 
+submitButton.addEventListener('click',() => {
+    console.log("inside submit button listner");
+    if(srcfile){
+        console.log("src file found");
+        uploadFile(uploadButton.files[0]);
+    }
+});
 downloadButton.addEventListener('click', () =>{
+    console.log("inside download button listener");
     if(structure){
         downloadCSV(getBeamCSV(), "beams");
     }
@@ -32,6 +48,7 @@ const uploadFile = (file) => {
         columns = structure["columns"];
         console.log("*********Beams***********");
         console.log(beams);
+        downloadButtonLabel.hidden = false;
     })
     .catch(err => console.error(err));
 

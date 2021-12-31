@@ -5,7 +5,7 @@ var port = process.env.PORT || 3000;
 http.createServer(function(req, res){
 
     if(req.url === "/"){
-        fs.readFile("./public/index.html", "UTF-8", function(err, html){
+        fs.readFile("./public/test.html", "UTF-8", function(err, html){
             res.writeHead(200, {"Content-Type": "text/html"});
             res.end(html);
         });
@@ -24,6 +24,12 @@ http.createServer(function(req, res){
         var imagePath = path.join(__dirname, 'public', req.url);
         var fileStream = fs.createReadStream(imagePath);
         res.writeHead(200, {"Content-Type": "image/jpeg"});
+        fileStream.pipe(res);
+        console.log(imagePath);
+    }else if(req.url.match("\.png$")){
+        var imagePath = path.join(__dirname, req.url);
+        var fileStream = fs.createReadStream(imagePath);
+        res.writeHead(200, {"Content-Type": "image/png"});
         fileStream.pipe(res);
         console.log(imagePath);
     }else{

@@ -1,4 +1,4 @@
-var beams, columns, structure;
+var beams, columns, structure,columnLines;
 const uploadButton = document.getElementById('upload-btn');
 const downloadButton = document.getElementById('download-btn');
 const submitButton = document.getElementById("submit-btn");
@@ -28,6 +28,7 @@ downloadButton.addEventListener('click', () =>{
     if(structure){
         downloadCSV(getBeamCSV(), "beams");
         downloadCSV(getColumnsCsv(),"columns");
+        downloadCSV(getColumnLinesCsv(),"column lines");
     }
 });
 
@@ -48,6 +49,7 @@ const uploadFile = (file) => {
         console.log(structure);
         beams = structure["beams"];
         columns = structure["columns"];
+        columnLines = structure["columnLineResponses"];
         console.log("*********Beams***********");
         console.log(beams);
         statusLabel.innerHTML = "Your file is ready to download";
@@ -147,6 +149,23 @@ function getColumnsCsv(){
 
     return csvStr;
 
+}
+
+function getColumnLinesCsv(){
+    JsonFields = ["Node Number","Cross Section X", "Cross Section Y", "Maximum Required Steel Area", "All Required Steel Areas -> "];
+    var csvStr = JsonFields.join(",") + "\n";
+    columnLines.forEach(element =>{
+        nodeNumber = element.nodeNumber;
+        crossSectionX = element.crossSection[0];
+        crossSectionY = element.crossSection[1];
+        maxRequiredSteelArea = element.maxRequiredSteelArea;
+        csvStr += nodeNumber + ','+ crossSectionX + ','+ crossSectionY + ','+ maxRequiredSteelArea;
+        for(area in element.requiredSteelAreas){
+            csvStr+= ','+area;
+        }
+        csvStr+= "\n";
+    });
+    return csvStr;
 }
 
 function getshearReinforcementString(shearReinforcement){

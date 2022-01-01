@@ -27,8 +27,9 @@ downloadButton.addEventListener('click', () =>{
     console.log("inside download button listener");
     if(structure){
         downloadCSV(getBeamCSV(), "beams");
-        downloadCSV(getColumnsCsv(),"columns");
         downloadCSV(getColumnLinesCsv(),"column lines");
+        downloadCSV(getColumnsCsv(),"columns");
+        
     }
 });
 
@@ -50,8 +51,8 @@ const uploadFile = (file) => {
         beams = structure["beams"];
         columns = structure["columns"];
         columnLines = structure["columnLineResponses"];
-        console.log("*********Beams***********");
-        console.log(beams);
+        console.log("*********colunmLines***********");
+        console.log(columnLines);
         statusLabel.innerHTML = "Your file is ready to download";
         downloadButtonLabel.hidden = false;
     })
@@ -152,16 +153,21 @@ function getColumnsCsv(){
 }
 
 function getColumnLinesCsv(){
+    console.log("inside getColumnLinesCsv");
     JsonFields = ["Node Number","Cross Section X", "Cross Section Y", "Maximum Required Steel Area", "All Required Steel Areas -> "];
     var csvStr = JsonFields.join(",") + "\n";
+    var crossSectionX,crossSectionY;
     columnLines.forEach(element =>{
         nodeNumber = element.nodeNumber;
-        crossSectionX = element.crossSection[0];
-        crossSectionY = element.crossSection[1];
+        if(element.crossSection){
+            crossSectionX = element.crossSection[0];
+            crossSectionY = element.crossSection[1];
+        }
+        
         maxRequiredSteelArea = element.maxRequiredSteelArea;
         csvStr += nodeNumber + ','+ crossSectionX + ','+ crossSectionY + ','+ maxRequiredSteelArea;
-        for(area in element.requiredSteelAreas){
-            csvStr+= ','+area;
+        for(i in element.requiredSteelAreas){
+            csvStr+= ','+element.requiredSteelAreas[i];
         }
         csvStr+= "\n";
     });

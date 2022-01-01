@@ -130,7 +130,7 @@ function getColumnsCsv(){
             crossSectionY = element.crossSection[1];
         }
         cover = element.cover;
-        requireSteelArea = element.requireSteelArea;
+        requiredSteelArea = element.requiredSteelArea;
         if(element.tieReinforement){
             tieReinforementDiameter = element.tieReinforement["diameter"];
             tieReinforementTie = element.tieReinforement["tie"];
@@ -140,7 +140,7 @@ function getColumnsCsv(){
         tieReinforcementGrade = element.tieReinforcementGrade;
         concreteGrade = element.concreteGrade;
 
-        csvStr += type + ','+pass + ','+segmentNumber + ','+incidence + ','+length + ','+crossSectionX + ','+crossSectionY + ','+cover + ','+requireSteelArea + ','+
+        csvStr += type + ','+pass + ','+segmentNumber + ','+incidence + ','+length + ','+crossSectionX + ','+crossSectionY + ','+cover + ','+requiredSteelArea + ','+
         tieReinforementDiameter + ','+tieReinforementTie + ','+mainReinforcementGrade + ','+tieReinforcementGrade + ','+ concreteGrade + "\n";
 
     });

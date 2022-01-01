@@ -27,6 +27,7 @@ downloadButton.addEventListener('click', () =>{
     console.log("inside download button listener");
     if(structure){
         downloadCSV(getBeamCSV(), "beams");
+        downloadCSV(getColumnsCsv(),"columns");
     }
 });
 
@@ -113,6 +114,38 @@ function getBeamCSV(){
 }
 
 function getColumnsCsv(){
+    JsonFields = ["Type","Pass", "Segment Number", "Incidence", "Length","CrossSection X","CrossSection Y", "cover","Required Steel Area",
+    "tieReinforcement diameter","tieReinforcement tie",
+     "Main ReinforcementGrade", "Tie Reinforcement Grade","Concrete Grade"];
+    var csvStr = JsonFields.join(",") + "\n";
+    var tieReinforementDiameter,tieReinforementTie,crossSectionX,crossSectionY;
+    columns.forEach(element => {
+        type = element.type;
+        pass = element.pass;
+        segmentNumber = element.segmentNumber;
+        incidence = element.incidence;
+        length = element.length;
+        if(element.crossSection){
+            crossSectionX = element.crossSection[0];
+            crossSectionY = element.crossSection[1];
+        }
+        cover = element.cover;
+        requireSteelArea = element.requireSteelArea;
+        if(element.tieReinforement){
+            tieReinforementDiameter = element.tieReinforement["diameter"];
+            tieReinforementTie = element.tieReinforement["tie"];
+        }
+       
+        mainReinforcementGrade = element.mainReinforcementGrade;
+        tieReinforcementGrade = element.tieReinforcementGrade;
+        concreteGrade = element.concreteGrade;
+
+        csvStr += type + ','+pass + ','+segmentNumber + ','+incidence + ','+length + ','+crossSectionX + ','+crossSectionY + ','+cover + ','+requireSteelArea + ','+
+        tieReinforementDiameter + ','+tieReinforementTie + ','+mainReinforcementGrade + ','+tieReinforcementGrade + ','+ concreteGrade + "\n";
+
+    });
+
+    return csvStr;
 
 }
 

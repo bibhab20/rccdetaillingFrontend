@@ -5,7 +5,7 @@ var port = process.env.PORT || 3000;
 http.createServer(function(req, res){
 
     if(req.url === "/"){
-        fs.readFile("./public/test.html", "UTF-8", function(err, html){
+        fs.readFile("./public/index.html", "UTF-8", function(err, html){
             res.writeHead(200, {"Content-Type": "text/html"});
             res.end(html);
         });

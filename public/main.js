@@ -93,9 +93,15 @@ function getBeamCSV(){
             topReinforcementEnd = element.topReinforcement["end"];
             
         }
+        else{
+            console.log("found beam with null Top Reinforcement having segment number: "+element.segmentNumber);
+        }
         if(element.bottomReinforcement){
             bottomReinforcement = element.bottomReinforcement;
-        }  
+        }
+        else{
+            console.log("found beam with null Bottom Reinforcement having segment number: "+element.segmentNumber);
+        }
         cover = element.cover;
         concreteGrade = element.concreteGrade;
         mainReinforcementGrade = element.mainReinforcementGrade;
@@ -106,6 +112,9 @@ function getBeamCSV(){
             shearReinforcement_2 = getshearReinforcementString(element.shearReinforcement[2]);
             shearReinforcement_3 = getshearReinforcementString(element.shearReinforcement[3]);
             shearReinforcement_4 = getshearReinforcementString(element.shearReinforcement[4]);
+        }
+        else{
+            console.log("found beam with null shearReinforcement having segment number: "+element.segmentNumber);
         }
 
         csvStr += type + ','+pass+','+ segmentNumber +','+ incidence +','+length+','+sizeX+','+sizeY+','+
@@ -132,11 +141,17 @@ function getColumnsCsv(){
             crossSectionX = element.crossSection[0];
             crossSectionY = element.crossSection[1];
         }
+        else{
+            console.log("found column with null cross section having segment number: "+element.segmentNumber);
+        }
         cover = element.cover;
         requiredSteelArea = element.requiredSteelArea;
         if(element.tieReinforement){
             tieReinforementDiameter = element.tieReinforement["diameter"];
             tieReinforementTie = element.tieReinforement["tie"];
+        }
+        else{
+            console.log("found column with null tie reinforcement having segment number: "+ element.segmentNumber);
         }
        
         mainReinforcementGrade = element.mainReinforcementGrade;
@@ -162,6 +177,9 @@ function getColumnLinesCsv(){
         if(element.crossSection){
             crossSectionX = element.crossSection[0];
             crossSectionY = element.crossSection[1];
+        }
+        else{
+            console.log("colunline with null corss section found having nodeId: "+ element.nodeNumber)
         }
         
         maxRequiredSteelArea = element.maxRequiredSteelArea;

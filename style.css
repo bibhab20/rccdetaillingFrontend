@@ -102,11 +102,11 @@ span{
     margin: 50px 0;
 }
 .upload-btn-wrapper{
-    margin-top: 10%;
+    margin-top: 3%;
     float: left;
 }
 .submit-btn-wrapper{
-    margin-top: 10%;
+    margin-top: auto;
     float: right;
     margin-right: 10%;
 }
@@ -127,7 +127,7 @@ span{
     margin-left: 10%;
     padding: 0.5rem;
     font-family: sans-serif;
-    font-size: 20pt;
+    font-size: 15pt;
     border-radius: 0.3rem;
     cursor: pointer;
     margin-top: 1rem;

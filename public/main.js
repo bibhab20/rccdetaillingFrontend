@@ -40,7 +40,7 @@ const uploadFile = (file) => {
     fd.append('file', file);
     console.log("inside upload file");
     // send `POST` request
-    fetch('https://rccdetailling.herokuapp.com/api/v1/upload', {
+    fetch('https://rccdetailling-backend.herokuapp.com/api/v1/upload', {
         method: 'POST',
         body: fd
     })
